@@ -1,19 +1,18 @@
 {
-  "name": "mern",
+  "name": "mern-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "A MERN stack application",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "build": "echo 'No build step defined'"
   },
-  "author": "sriram",
-  "license": "ISC",
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mongoose": "^8.5.2",
-    "nodemon": "^3.1.4"
+    "express": "^4.17.1",
+    "mongoose": "^5.10.7",
+    "dotenv": "^8.2.0"
   }
 }
