@@ -10,13 +10,20 @@ const dbUrl = process.env.DB_URL;
 
 app.use(express.json());
 
-//connecting Db
-mongoose.connect(`${dbUrl}mern-app`)
-.then(()=>{
-    console.log("DB connected")
-}).catch((err)=>{
-    console.log(err)
+
+// Connecting to the database with options
+mongoose.connect(`${dbUrl}/mern-app`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000, // 5 seconds
+  socketTimeoutMS: 45000 // 45 seconds
 })
+  .then(() => {
+    console.log("DB connected");
+  })
+  .catch((err) => {
+    console.error("DB connection error:", err);
+  });
 
 // creating Schema
 const todoschema = new mongoose.Schema({
