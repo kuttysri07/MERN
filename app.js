@@ -12,12 +12,16 @@ app.use(express.json());
 mongoose.set('strictQuery', false);
 
 // Connecting to the database with options
-mongoose.connect(`${dbUrl}/mern-app`, {
+const mongooseOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 5000, // 5 seconds
-  socketTimeoutMS: 45000 // 45 seconds
-})
+  serverSelectionTimeoutMS: 10000, // 10 seconds
+  socketTimeoutMS: 45000, // 45 seconds
+  reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+  reconnectInterval: 500, // Reconnect every 500ms
+};
+
+mongoose.connect(`${dbUrl}/mern-app`, mongooseOptions)
   .then(() => {
     console.log("DB connected");
   })
