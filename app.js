@@ -9,7 +9,7 @@ const port = process.env.PORT ;
 const dbUrl = process.env.DB_URL;
 
 app.use(express.json());
-
+mongoose.set('strictQuery', false);
 
 // Connecting to the database with options
 mongoose.connect(`${dbUrl}/mern-app`, {
