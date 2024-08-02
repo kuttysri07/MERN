@@ -21,13 +21,18 @@ const mongooseOptions = {
   reconnectInterval: 500, // Reconnect every 500ms
 };
 
-mongoose.connect(`${dbUrl}/mern-app`, mongooseOptions)
-  .then(() => {
+const connectDB = async () => {
+  try {
+    await mongoose.connect(`${dbUrl}/mern-app`, mongooseOptions);
     console.log("DB connected");
-  })
-  .catch((err) => {
+  } catch (err) {
     console.error("DB connection error:", err);
-  });
+    process.exit(1); // Exit the process with failure
+  }
+};
+
+// Call the async function to connect to the database
+connectDB();
 
 // creating Schema
 const todoschema = new mongoose.Schema({
