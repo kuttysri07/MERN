@@ -49,7 +49,7 @@ app.post("/todos",async (req,res)=>{
 
 app.get("/", async(req,res)=>{
     try {
-        const alltodos =await todomodel.find()
+        const alltodos =await todomodel.find({})
         res.json(alltodos)
     } catch (error) {
         console.log(error);
